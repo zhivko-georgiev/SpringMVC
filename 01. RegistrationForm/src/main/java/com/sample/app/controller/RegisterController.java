@@ -25,7 +25,7 @@ public class RegisterController {
      
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute("registerForm") User user) {
- 
+    	
     	return "registrationSuccess";
     }
 }

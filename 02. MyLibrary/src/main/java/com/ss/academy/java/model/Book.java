@@ -1,31 +1,46 @@
 package com.ss.academy.java.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "books")
+@Table(name = "BOOK")
 public class Book {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "BOOK_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Size(min = 3, max = 50)
-	@Column(name = "name")
+	@Column(name = "NAME")
 	@NotNull
 	private String name;
 
-	@Column(name = "status")
+	@Column(name = "STATUS")
 	@NotNull
 	private String status;
+	
+	@ManyToMany(mappedBy = "books", fetch = FetchType.LAZY, targetEntity = Author.class)
+	private List<Author> authors;
+	
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
 
 	public Long getId() {
 		return id;

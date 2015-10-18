@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
 import com.ss.academy.java.service.BookService;
 
@@ -32,7 +33,10 @@ public class BooksController {
 	@RequestMapping(value = { "/all" }, method = RequestMethod.GET)
 	public String listAllBooks(ModelMap model) {
 		List<Book> books = service.findAllBooks();
+		List<Author> authors = service.findAllAuthors();
+
 		model.addAttribute("books", books);
+		model.addAttribute("authors", authors);
 
 		return "books/all";
 	}

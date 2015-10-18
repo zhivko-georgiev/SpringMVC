@@ -3,6 +3,7 @@ package com.ss.academy.java.service;
 import java.util.List;
 
 import com.ss.academy.java.model.Author;
+import com.ss.academy.java.model.Book;
 
 public interface AuthorService {
 	Author findById(Long id);
@@ -11,7 +12,7 @@ public interface AuthorService {
 
 	void updateAuthor(Author author);
 
-	// List<Book> findAllBooks();
+	List<Book> findAllBooks();
 
 	List<Author> findAllAuthors();
 

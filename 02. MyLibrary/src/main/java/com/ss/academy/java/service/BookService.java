@@ -2,6 +2,7 @@ package com.ss.academy.java.service;
 
 import java.util.List;
 
+import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
 
 public interface BookService {
@@ -12,7 +13,7 @@ public interface BookService {
 
 	void updateBook(Book book);
 
-	// List<Author> findAllAuthors();
+	List<Author> findAllAuthors();
 
 	List<Book> findAllBooks();
 

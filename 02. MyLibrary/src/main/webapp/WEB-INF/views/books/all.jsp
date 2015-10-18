@@ -13,11 +13,15 @@
 		<tr>
 			<td>NAME</td>
 			<td>Status</td>
+			<td>Author/s</td>
 		</tr>
 		<c:forEach items="${books}" var="book">
 			<tr>
 				<td>${book.name}</td>
 				<td>${book.status}</td>
+				<c:forEach items="${authors}" var="author">
+					<td>${author.name}</td>
+				</c:forEach>
 				<td><a href="<c:url value='/books/edit-${book.id}-book' />">Edit
 						Book</a></td>
 				<td><a href="<c:url value='/books/delete-${book.id}-book' />">Delete

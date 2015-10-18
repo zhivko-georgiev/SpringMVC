@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
 
 @Repository("bookDao")
@@ -30,17 +31,17 @@ public class BookDaoImpl extends AbstractDao<Long, Book> implements BookDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Book> findAllBooks() {
+	public List<Author> findAllAuthors() {
 		Criteria criteria = createEntityCriteria();
-		
-        return (List<Book>) criteria.list();
+
+		return (List<Author>) criteria.list();
 	}
 
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Author> findAllAuthors() {
-//		Criteria criteria = createEntityCriteria();
-//		
-//        return (List<Author>) criteria.list();
-//	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Book> findAllBooks() {
+		Criteria criteria = createEntityCriteria();
+
+		return (List<Book>) criteria.list();
+	}
 }

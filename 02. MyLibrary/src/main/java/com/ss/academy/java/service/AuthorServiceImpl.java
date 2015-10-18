@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.academy.java.dao.AuthorDao;
 import com.ss.academy.java.model.Author;
+import com.ss.academy.java.model.Book;
 
 @Service("authorService")
 @Transactional
@@ -37,10 +38,10 @@ public class AuthorServiceImpl implements AuthorService {
 		}
 	}
 
-	// @Override
-	// public List<Book> findAllBooks() {
-	// return dao.findAllBooks();
-	// }
+	@Override
+	public List<Book> findAllBooks() {
+		return dao.findAllBooks();
+	}
 
 	@Override
 	public void deleteAuthor(Author author) {

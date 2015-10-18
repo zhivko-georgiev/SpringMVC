@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.academy.java.dao.BookDao;
+import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
 
 @Service("bookService")
@@ -36,10 +37,10 @@ public class BookServiceImpl implements BookService {
 		}
 	}
 
-	// @Override
-	// public List<Author> findAllAuthors() {
-	// return dao.findAllAuthors();
-	// }
+	@Override
+	public List<Author> findAllAuthors() {
+		return dao.findAllAuthors();
+	}
 
 	@Override
 	public List<Book> findAllBooks() {

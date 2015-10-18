@@ -3,6 +3,7 @@ package com.ss.academy.java.dao;
 import java.util.List;
 
 import com.ss.academy.java.model.Author;
+import com.ss.academy.java.model.Book;;
 
 public interface AuthorDao {
  
@@ -14,5 +15,5 @@ public interface AuthorDao {
      
     List<Author> findAllAuthors();
     
-//    List<Book> findAllBooks();
+    List<Book> findAllBooks();
 }

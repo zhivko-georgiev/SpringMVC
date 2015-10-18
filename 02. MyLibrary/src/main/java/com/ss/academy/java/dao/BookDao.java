@@ -2,6 +2,7 @@ package com.ss.academy.java.dao;
 
 import java.util.List;
 
+import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
 
 public interface BookDao {
@@ -14,5 +15,5 @@ public interface BookDao {
 
 	List<Book> findAllBooks();
 
-//	List<Author> findAllAuthors();
+	List<Author> findAllAuthors();
 }

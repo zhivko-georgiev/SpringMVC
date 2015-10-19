@@ -12,11 +12,11 @@
 	<br />
 	<c:choose>
 		<c:when test="${bookList}">
-			Go back to <a href="<c:url value='/books/all' />">List of All
+			Go back to <a href="<c:url value='/books/' />">List of All
 				Books</a>
 		</c:when>
 		<c:otherwise>
-			Go back to <a href="<c:url value='/authors/all' />">List of All
+			Go back to <a href="<c:url value='/authors/' />">List of All
 				Authors</a>
 		</c:otherwise>
 	</c:choose>

@@ -16,17 +16,14 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private BookDao dao;
 
-	@Override
 	public Book findById(Long id) {
 		return dao.findById(id);
 	}
 
-	@Override
 	public void saveBook(Book book) {
 		dao.saveBook(book);
 	}
 
-	@Override
 	public void updateBook(Book book) {
 		Book entity = dao.findById(book.getId());
 
@@ -36,17 +33,14 @@ public class BookServiceImpl implements BookService {
 		}
 	}
 
-	// @Override
 	// public List<Author> findAllAuthors() {
 	// return dao.findAllAuthors();
 	// }
 
-	@Override
 	public List<Book> findAllBooks() {
 		return dao.findAllBooks();
 	};
 
-	@Override
 	public void deleteBook(Book book) {
 		dao.deleteBookById(book.getId());
 	}

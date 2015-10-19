@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping(value = {"/"})
 public class HomeController {
 	
 	/**

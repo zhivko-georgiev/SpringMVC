@@ -18,7 +18,7 @@ import com.ss.academy.java.service.AuthorService;
 
 
 @Controller
-@RequestMapping({ "/authors" })
+@RequestMapping({ "authors" })
 public class AuthorsController {
 	
     @Autowired
@@ -30,7 +30,7 @@ public class AuthorsController {
     /*
      * This method will list all existing authors.
      */
-    @RequestMapping(value = {"/all"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String listAllAuthors(ModelMap model) {
         List<Author> authors = service.findAllAuthors();
         model.addAttribute("authors", authors);

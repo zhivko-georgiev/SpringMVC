@@ -17,7 +17,7 @@ import com.ss.academy.java.model.Book;
 import com.ss.academy.java.service.BookService;
 
 @Controller
-@RequestMapping({ "/books" })
+@RequestMapping({ "books" })
 public class BooksController {
 
 	@Autowired
@@ -29,7 +29,7 @@ public class BooksController {
 	/*
 	 * This method will list all existing books.
 	 */
-	@RequestMapping(value = { "/all" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String listAllBooks(ModelMap model) {
 		List<Book> books = service.findAllBooks();
 		model.addAttribute("books", books);

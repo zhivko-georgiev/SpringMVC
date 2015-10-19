@@ -13,11 +13,13 @@
 		<tr>
 			<td>NAME</td>
 			<td>Status</td>
+			<td>Author/s</td>
 		</tr>
 		<c:forEach items="${books}" var="book">
 			<tr>
-				<td>${book.name}</td>
+				<td>${book.title}</td>
 				<td>${book.status}</td>
+
 				<td><a href="<c:url value='/books/edit-${book.id}-book' />">Edit
 						Book</a></td>
 				<td><a href="<c:url value='/books/delete-${book.id}-book' />">Delete
@@ -25,6 +27,11 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<select>
+		<c:forEach items="${authors}" var="author">
+			<option>${author.name}</option>
+		</c:forEach>
+	</select>
 	<br />
 	<a href="<c:url value='/books/new' />">Add New Book</a>
 	<br /> Go back to

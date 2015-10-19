@@ -13,9 +13,9 @@
 		<form:input type="hidden" path="id" id="id" />
 		<table>
 			<tr>
-				<td><label for="name">Name: </label></td>
-				<td><form:input path="name" id="name" /></td>
-				<td><form:errors path="name" cssClass="error" /></td>
+				<td><label for="title">Title: </label></td>
+				<td><form:input path="title" id="title" /></td>
+				<td><form:errors path="title" cssClass="error" /></td>
 			</tr>
 			<tr>
 				<td><label for="status">Status: </label></td>

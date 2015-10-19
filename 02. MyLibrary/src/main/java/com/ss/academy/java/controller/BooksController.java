@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
+import com.ss.academy.java.service.AuthorService;
 import com.ss.academy.java.service.BookService;
 
 @Controller
@@ -21,7 +23,10 @@ import com.ss.academy.java.service.BookService;
 public class BooksController {
 
 	@Autowired
-	BookService service;
+	BookService bookService;
+	
+	@Autowired
+	AuthorService authorService;
 
 	@Autowired
 	MessageSource messageSource;
@@ -31,8 +36,11 @@ public class BooksController {
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String listAllBooks(ModelMap model) {
-		List<Book> books = service.findAllBooks();
+		List<Book> books = bookService.findAllBooks();
+		List<Author> authors = authorService.findAllAuthors();
+		
 		model.addAttribute("books", books);
+		model.addAttribute("authors", authors);
 
 		return "books/all";
 	}
@@ -60,7 +68,7 @@ public class BooksController {
 			return "books/addNewBook";
 		}
 
-		service.saveBook(book);
+		bookService.saveBook(book);
 
 		model.addAttribute("success", "Book " + book.getTitle() + " registered successfully");
 		model.addAttribute("bookList", true);
@@ -73,7 +81,7 @@ public class BooksController {
 	 */
 	@RequestMapping(value = { "/edit-{id}-book" }, method = RequestMethod.GET)
 	public String editBook(@PathVariable Long id, ModelMap model) {
-		Book book = service.findById(id);
+		Book book = bookService.findById(id);
 		model.addAttribute("book", book);
 		model.addAttribute("edit", true);
 
@@ -91,7 +99,7 @@ public class BooksController {
 			return "books/addNewBook";
 		}
 
-		service.updateBook(book);
+		bookService.updateBook(book);
 
 		model.addAttribute("success", "Book " + book.getTitle() + " updated successfully");
 		model.addAttribute("bookList", true);
@@ -104,7 +112,7 @@ public class BooksController {
 	 */
 	@RequestMapping(value = { "/delete-{id}-book" }, method = RequestMethod.GET)
 	public String deleteBook(@PathVariable Long id) {
-		service.deleteBook(service.findById(id));
+		bookService.deleteBook(bookService.findById(id));
 
 		return "redirect:/books/";
 	}

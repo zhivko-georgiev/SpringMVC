@@ -12,8 +12,6 @@ public interface BookService {
 
 	void updateBook(Book book);
 
-	// List<Author> findAllAuthors();
-
 	List<Book> findAllBooks();
 
 	void deleteBook(Book book);

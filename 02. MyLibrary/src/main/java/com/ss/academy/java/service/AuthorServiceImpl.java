@@ -30,14 +30,8 @@ public class AuthorServiceImpl implements AuthorService {
 		if (entity != null) {
 			entity.setName(author.getName());
 			entity.setCountry(author.getCountry());
-			// entity.setBooks(author.getBooks());
 		}
 	}
-
-	// @Override
-	// public List<Book> findAllBooks() {
-	// return dao.findAllBooks();
-	// }
 
 	public void deleteAuthor(Author author) {
 		dao.deleteAuthorById(author.getId());

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.ss.academy.java.model.Book;
 
 @Repository("bookDao")
-public class BookDaoImpl extends AbstractDao<Long, Book> implements BookDao {
+public class BookDaoImpl extends AbstractDao<Long, Book>implements BookDao {
 
 	public Book findById(Long id) {
 		return getByKey(id);
@@ -20,23 +20,15 @@ public class BookDaoImpl extends AbstractDao<Long, Book> implements BookDao {
 	}
 
 	public void deleteBookById(Long id) {
-        Query query = getSession().createSQLQuery("delete from books where id = :id");
-        query.setLong("id", id);
-        query.executeUpdate();
+		Query query = getSession().createSQLQuery("delete from books where id = :id");
+		query.setLong("id", id);
+		query.executeUpdate();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Book> findAllBooks() {
 		Criteria criteria = createEntityCriteria();
-		
-        return (List<Book>) criteria.list();
-	}
 
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Author> findAllAuthors() {
-//		Criteria criteria = createEntityCriteria();
-//		
-//        return (List<Author>) criteria.list();
-//	}
+		return (List<Book>) criteria.list();
+	}
 }

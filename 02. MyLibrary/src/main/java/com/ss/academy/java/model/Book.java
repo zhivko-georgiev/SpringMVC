@@ -10,20 +10,19 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "books")
+@Table(name = "BOOKS")
 public class Book {
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Size(min = 3, max = 50)
-	@Column(name = "name")
+	@Column(name = "TITLE")
 	@NotNull
-	private String name;
+	private String tittle;
 
-	@Column(name = "status")
+	@Column(name = "STATUS")
 	@NotNull
 	private String status;
 
@@ -35,12 +34,12 @@ public class Book {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return tittle;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.tittle = title;
 	}
 
 	public String getStatus() {

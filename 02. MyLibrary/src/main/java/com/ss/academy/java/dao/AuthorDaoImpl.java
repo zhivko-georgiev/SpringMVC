@@ -9,34 +9,26 @@ import org.springframework.stereotype.Repository;
 import com.ss.academy.java.model.Author;
 
 @Repository("authorDao")
-public class AuthorDaoImpl extends AbstractDao<Long, Author> implements AuthorDao {
- 
+public class AuthorDaoImpl extends AbstractDao<Long, Author>implements AuthorDao {
+
 	public Author findById(Long id) {
-        return getByKey(id);
-    }
+		return getByKey(id);
+	}
 
 	public void saveAuthor(Author author) {
 		persist(author);
 	}
- 
+
 	public void deleteAuthorById(Long id) {
-        Query query = getSession().createSQLQuery("delete from authors where id = :id");
-        query.setLong("id", id);
-        query.executeUpdate();
-    }
- 
+		Query query = getSession().createSQLQuery("delete from authors where id = :id");
+		query.setLong("id", id);
+		query.executeUpdate();
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Author> findAllAuthors() {
 		Criteria criteria = createEntityCriteria();
-		
-        return (List<Author>) criteria.list();
-	}
 
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Book> findAllBooks() {
-//		Criteria criteria = createEntityCriteria();
-//		
-//        return (List<Book>) criteria.list();
-//	}
+		return (List<Author>) criteria.list();
+	}
 }

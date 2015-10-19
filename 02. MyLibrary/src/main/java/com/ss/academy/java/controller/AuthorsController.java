@@ -18,7 +18,7 @@ import com.ss.academy.java.service.AuthorService;
 
 
 @Controller
-@RequestMapping({ "authors" })
+@RequestMapping({ "/authors" })
 public class AuthorsController {
 	
     @Autowired
@@ -106,6 +106,6 @@ public class AuthorsController {
     public String deleteAuthor(@PathVariable Long id) {
         service.deleteAuthor(service.findById(id));
         
-        return "redirect:/authors/all";
+        return "redirect:/authors/";
     }
 }

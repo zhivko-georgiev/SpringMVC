@@ -17,7 +17,7 @@ import com.ss.academy.java.model.Book;
 import com.ss.academy.java.service.BookService;
 
 @Controller
-@RequestMapping({ "books" })
+@RequestMapping({ "/books" })
 public class BooksController {
 
 	@Autowired
@@ -62,7 +62,7 @@ public class BooksController {
 
 		service.saveBook(book);
 
-		model.addAttribute("success", "Book " + book.getName() + " registered successfully");
+		model.addAttribute("success", "Book " + book.getTitle() + " registered successfully");
 		model.addAttribute("bookList", true);
 
 		return "success";
@@ -93,7 +93,7 @@ public class BooksController {
 
 		service.updateBook(book);
 
-		model.addAttribute("success", "Book " + book.getName() + " updated successfully");
+		model.addAttribute("success", "Book " + book.getTitle() + " updated successfully");
 		model.addAttribute("bookList", true);
 
 		return "success";
@@ -106,6 +106,6 @@ public class BooksController {
 	public String deleteBook(@PathVariable Long id) {
 		service.deleteBook(service.findById(id));
 
-		return "redirect:/books/all";
+		return "redirect:/books/";
 	}
 }

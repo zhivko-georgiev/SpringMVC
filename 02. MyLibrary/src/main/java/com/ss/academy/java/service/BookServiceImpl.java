@@ -28,14 +28,10 @@ public class BookServiceImpl implements BookService {
 		Book entity = dao.findById(book.getId());
 
 		if (entity != null) {
-			entity.setName(book.getName());
+			entity.setTitle(book.getTitle());
 			entity.setStatus(book.getStatus());
 		}
 	}
-
-	// public List<Author> findAllAuthors() {
-	// return dao.findAllAuthors();
-	// }
 
 	public List<Book> findAllBooks() {
 		return dao.findAllBooks();

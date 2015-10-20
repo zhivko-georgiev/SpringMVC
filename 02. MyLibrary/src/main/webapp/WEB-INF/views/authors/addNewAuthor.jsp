@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form method="POST" modelAttribute="author">
+	<form:form modelAttribute="author">
 		<form:input type="hidden" path="id" id="id" />
 		<table>
 			<tr>
@@ -24,10 +24,14 @@
 			<tr>
 				<td colspan="3"><c:choose>
 						<c:when test="${edit}">
-							<input type="submit" value="Update" />
+							<form:form action="/MyLibrary/authors/${author.id}" method="PUT">
+								<input type="submit" value="Edit Author" />
+							</form:form>
 						</c:when>
 						<c:otherwise>
-							<input type="submit" value="Add" />
+							<form:form action="/MyLibrary/authors/new" method="GET">
+								<input type="submit" value="Add Author" />
+							</form:form>
 						</c:otherwise>
 					</c:choose></td>
 			</tr>

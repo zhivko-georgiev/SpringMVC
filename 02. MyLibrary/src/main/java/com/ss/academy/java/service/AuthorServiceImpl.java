@@ -16,17 +16,14 @@ public class AuthorServiceImpl implements AuthorService {
 	@Autowired
 	private AuthorDao dao;
 
-	@Override
 	public Author findById(Long id) {
 		return dao.findById(id);
 	}
 
-	@Override
 	public void saveAuthor(Author author) {
 		dao.saveAuthor(author);
 	}
 
-	@Override
 	public void updateAuthor(Author author) {
 		Author entity = dao.findById(author.getId());
 
@@ -37,12 +34,10 @@ public class AuthorServiceImpl implements AuthorService {
 		}
 	}
 
-	@Override
 	public void deleteAuthor(Author author) {
 		dao.deleteAuthorById(author.getId());
 	}
 
-	@Override
 	public List<Author> findAllAuthors() {
 		return dao.findAllAuthors();
 	}

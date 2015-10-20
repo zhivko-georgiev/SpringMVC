@@ -70,7 +70,7 @@ public class AuthorsController {
 	/*
 	 * This method will provide the medium to update an existing author.
 	 */
-	@RequestMapping(value = { "/edit-{id}-author" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/{id}" }, method = RequestMethod.GET)
 	public String editAuthor(@PathVariable Long id, ModelMap model) {
 		Author author = service.findById(id);
 		model.addAttribute("author", author);
@@ -83,7 +83,7 @@ public class AuthorsController {
 	 * This method will be called on form submission, handling POST request for
 	 * updating author in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/edit-{id}-author" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/{id}" }, method = RequestMethod.PUT)
 	public String updateAuthor(@Valid Author author, BindingResult result, ModelMap model, @PathVariable Long id) {
 
 		if (result.hasErrors()) {
@@ -92,15 +92,13 @@ public class AuthorsController {
 
 		service.updateAuthor(author);
 
-		model.addAttribute("success", "Author " + author.getName() + " updated successfully");
-
-		return "success";
+		return "redirect:/authors/";
 	}
 
 	/*
 	 * This method will delete an author by it's ID value.
 	 */
-	@RequestMapping(value = { "/delete-{id}-author" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/{id}" }, method = RequestMethod.DELETE)
 	public String deleteAuthor(@PathVariable Long id) {
 		service.deleteAuthor(service.findById(id));
 

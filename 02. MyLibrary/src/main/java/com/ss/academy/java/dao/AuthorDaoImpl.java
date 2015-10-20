@@ -11,25 +11,21 @@ import com.ss.academy.java.model.Author;
 @Repository("authorDao")
 public class AuthorDaoImpl extends AbstractDao<Long, Author> implements AuthorDao {
 
-	@Override
 	public Author findById(Long id) {
 		return getByKey(id);
 	}
 
-	@Override
 	public void saveAuthor(Author author) {
 		persist(author);
 	}
 
-	@Override
 	public void deleteAuthorById(Long id) {
-		Query query = getSession().createSQLQuery("delete from author where id = :id");
+		Query query = getSession().createSQLQuery("delete from author where author_id = :id");
 		query.setLong("id", id);
 		query.executeUpdate();
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Author> findAllAuthors() {
 		Criteria criteria = createEntityCriteria();
 

@@ -1,7 +1,5 @@
 package com.ss.academy.java.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import com.ss.academy.java.service.AuthorService;
 import com.ss.academy.java.service.BookService;
 
 @Controller
-@RequestMapping({ "/books" })
 public class BooksController {
 
 	@Autowired
@@ -34,21 +31,19 @@ public class BooksController {
 	/*
 	 * This method will list all existing books.
 	 */
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String listAllBooks(ModelMap model) {
-		List<Book> books = bookService.findAllBooks();
-		List<Author> authors = authorService.findAllAuthors();
+	@RequestMapping(value = { "/authors/{id}/books" }, method = RequestMethod.GET)
+	public String listAllBooks(@PathVariable Long id, ModelMap model) {
+		Author author = authorService.findById(id);
 		
-		model.addAttribute("books", books);
-		model.addAttribute("authors", authors);
-
+		model.addAttribute("author", author);
+		
 		return "books/all";
 	}
 
 	/*
 	 * This method will provide the medium to add a new book.
 	 */
-	@RequestMapping(value = { "/new" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/authors/{id}/books/new" }, method = RequestMethod.GET)
 	public String addNewBook(ModelMap model) {
 		Book book = new Book();
 		model.addAttribute("book", book);
@@ -61,28 +56,34 @@ public class BooksController {
 	 * This method will be called on form submission, handling POST request for
 	 * saving book in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-	public String saveBook(@Valid Book book, BindingResult result, ModelMap model) {
+	@RequestMapping(value = { "/authors/{id}/books/new" }, method = RequestMethod.POST)
+	public String saveBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id) {
 
 		if (result.hasErrors()) {
 			return "books/addNewBook";
 		}
 
+		Author author = authorService.findById(id);
+		author.getBooks().add(book);
+		book.setAuthor(author);
 		bookService.saveBook(book);
 
 		model.addAttribute("success", "Book " + book.getTitle() + " registered successfully");
 		model.addAttribute("bookList", true);
 
-		return "success";
+		return "redirect:/authors/{id}";
 	}
 
 	/*
 	 * This method will provide the medium to update an existing book.
 	 */
-	@RequestMapping(value = { "/edit-{id}-book" }, method = RequestMethod.GET)
-	public String editBook(@PathVariable Long id, ModelMap model) {
+	@RequestMapping(value = { "/authors/{id}/books/{book_id}" }, method = RequestMethod.GET)
+	public String editBook(@PathVariable Long id, @PathVariable Long book_id, ModelMap model) {
 		Book book = bookService.findById(id);
+		Author author = book.getAuthor();
+		
 		model.addAttribute("book", book);
+		model.addAttribute("author", author);
 		model.addAttribute("edit", true);
 
 		return "books/addNewBook";
@@ -92,8 +93,9 @@ public class BooksController {
 	 * This method will be called on form submission, handling POST request for
 	 * updating book in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/edit-{id}-book" }, method = RequestMethod.POST)
-	public String updateBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id) {
+	@RequestMapping(value = { "/authors/{id}/books/{book_id}" }, method = RequestMethod.PUT)
+	public String updateBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id,
+			@PathVariable Long book_id) {
 
 		if (result.hasErrors()) {
 			return "books/addNewBook";
@@ -110,8 +112,8 @@ public class BooksController {
 	/*
 	 * This method will delete an book by it's ID value.
 	 */
-	@RequestMapping(value = { "/delete-{id}-book" }, method = RequestMethod.GET)
-	public String deleteBook(@PathVariable Long id) {
+	@RequestMapping(value = { "/authors/{id}/books/{book_id}" }, method = RequestMethod.DELETE)
+	public String deleteBook(@PathVariable Long id, @PathVariable Long book_id) {
 		bookService.deleteBook(bookService.findById(id));
 
 		return "redirect:/books/";

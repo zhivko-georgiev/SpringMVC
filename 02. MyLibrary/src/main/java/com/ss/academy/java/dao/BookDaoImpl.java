@@ -11,17 +11,14 @@ import com.ss.academy.java.model.Book;
 @Repository("bookDao")
 public class BookDaoImpl extends AbstractDao<Long, Book> implements BookDao {
 
-	@Override
 	public Book findById(Long id) {
 		return getByKey(id);
 	}
 
-	@Override
 	public void saveBook(Book book) {
 		persist(book);
 	}
 
-	@Override
 	public void deleteBookById(Long id) {
         Query query = getSession().createSQLQuery("delete from author_book where book_id = :id");
         query.setLong("id", id);
@@ -29,7 +26,6 @@ public class BookDaoImpl extends AbstractDao<Long, Book> implements BookDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Book> findAllBooks() {
 		Criteria criteria = createEntityCriteria();
 

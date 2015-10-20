@@ -30,7 +30,7 @@ public class Book {
 	@NotNull
 	private String status;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "AUTHOR_ID")
 	private Author author;
 

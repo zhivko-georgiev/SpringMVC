@@ -2,13 +2,13 @@ package com.ss.academy.java.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
@@ -33,8 +33,8 @@ public class Author {
 	@NotNull
 	private String country;
 	
-	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-	@OrderColumn(name = "TITLE")
+	@OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OrderColumn(name = "book_id")
 	private List<Book> books;
 
 	public Long getId() {

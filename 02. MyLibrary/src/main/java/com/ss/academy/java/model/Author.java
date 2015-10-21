@@ -1,6 +1,7 @@
 package com.ss.academy.java.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,9 +34,9 @@ public class Author {
 	@NotNull
 	private String country;
 	
-	@OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@OrderColumn(name = "book_id")
-	private List<Book> books;
+	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@OrderColumn(name = "book_id")
+	private Set<Book> books;
 
 	public Long getId() {
 		return id;
@@ -61,11 +62,11 @@ public class Author {
 		this.country = country;
 	}
 	
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
 }

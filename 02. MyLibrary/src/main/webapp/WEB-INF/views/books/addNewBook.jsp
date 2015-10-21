@@ -31,7 +31,7 @@
 						</c:when>
 						<c:otherwise>
 							<form:form action="/MyLibrary/authors/${author.id}/books/new" method="POST">
-								<input type="submit" value="Add Author" />
+								<input type="submit" value="Add Book" />
 							</form:form>
 						</c:otherwise>
 					</c:choose></td>

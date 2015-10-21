@@ -61,10 +61,8 @@ public class AuthorsController {
 		}
 
 		service.saveAuthor(author);
-
-		model.addAttribute("success", "Author " + author.getName() + " registered successfully");
-
-		return "success";
+		
+		return "redirect:/authors/";
 	}
 
 	/*

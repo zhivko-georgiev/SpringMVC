@@ -1,6 +1,7 @@
 package com.ss.academy.java.service.book;
 
 import java.util.List;
+import java.util.Set;
 
 import com.ss.academy.java.model.Book;
 
@@ -12,7 +13,7 @@ public interface BookService {
 
 	void updateBook(Book book);
 
-	List<Book> findAllBooks();
+	Set<Book> findAllBooks();
 
 	void deleteBook(Book book);
 }

@@ -1,6 +1,7 @@
 package com.ss.academy.java.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -37,7 +38,7 @@ public class BooksController {
 	@RequestMapping(value = { "/books" }, method = RequestMethod.GET)
 	public String listAllBooks(@PathVariable Long id, ModelMap model) {
 		Author author = authorService.findById(id);
-		List<Book> books = author.getBooks();
+		Set<Book> books = author.getBooks();
 		
 		model.addAttribute("books", books);
 		model.addAttribute("author", author);
@@ -74,7 +75,7 @@ public class BooksController {
 		bookService.saveBook(book);
 
 		
-		return "redirect:/authors/{id}";
+		return "redirect:/authors/{id}/books";
 	}
 
 	/*

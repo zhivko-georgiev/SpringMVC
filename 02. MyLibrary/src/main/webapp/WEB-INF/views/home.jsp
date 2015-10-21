@@ -9,9 +9,6 @@
 <body>
 	<h1>Welcome To Our Library!</h1>
 	<P>
-		<a href="<c:url value='/books/' />">List All Books</a>
-	</P>
-	<P>
 		<a href="<c:url value='/authors/' />">List All Authors</a>
 	</P>
 </body>

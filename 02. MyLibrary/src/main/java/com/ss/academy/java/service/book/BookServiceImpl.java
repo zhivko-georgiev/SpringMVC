@@ -1,4 +1,4 @@
-package com.ss.academy.java.service;
+package com.ss.academy.java.service.book;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ss.academy.java.dao.BookDao;
+import com.ss.academy.java.dao.book.BookDao;
 import com.ss.academy.java.model.Book;
 
 @Service("bookService")

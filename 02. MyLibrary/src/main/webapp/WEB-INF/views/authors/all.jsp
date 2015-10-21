@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Insert title here</title>
+<title>Authors List</title>
 </head>
 <body>
 	<h2>List of Authors</h2>
@@ -17,7 +17,7 @@
 		</tr>
 		<c:forEach items="${authors}" var="author">
 			<tr>
-				<td><a href="<c:url value="/authors/${author.id}/books" />">${author.name}</a></td>
+				<td><a href="<c:url value='/authors/${author.id}/books' />">${author.name}</a></td>
 				<td>${author.country}</td>
 				<td>
 					<form:form action="/MyLibrary/authors/${author.id}" method="GET">

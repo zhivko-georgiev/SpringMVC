@@ -1,4 +1,4 @@
-package com.ss.academy.java.service;
+package com.ss.academy.java.service.author;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ss.academy.java.dao.AuthorDao;
+import com.ss.academy.java.dao.author.AuthorDao;
 import com.ss.academy.java.model.Author;
 
 @Service("authorService")

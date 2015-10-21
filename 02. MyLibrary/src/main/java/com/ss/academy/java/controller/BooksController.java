@@ -1,5 +1,7 @@
 package com.ss.academy.java.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ss.academy.java.model.Author;
 import com.ss.academy.java.model.Book;
-import com.ss.academy.java.service.AuthorService;
-import com.ss.academy.java.service.BookService;
+import com.ss.academy.java.service.author.AuthorService;
+import com.ss.academy.java.service.book.BookService;
 
 @Controller
+@RequestMapping(value = "/authors/{id}")
 public class BooksController {
 
 	@Autowired
@@ -31,10 +34,12 @@ public class BooksController {
 	/*
 	 * This method will list all existing books.
 	 */
-	@RequestMapping(value = { "/authors/{id}/books" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/books" }, method = RequestMethod.GET)
 	public String listAllBooks(@PathVariable Long id, ModelMap model) {
 		Author author = authorService.findById(id);
+		List<Book> books = author.getBooks();
 		
+		model.addAttribute("books", books);
 		model.addAttribute("author", author);
 		
 		return "books/all";
@@ -43,7 +48,7 @@ public class BooksController {
 	/*
 	 * This method will provide the medium to add a new book.
 	 */
-	@RequestMapping(value = { "/authors/{id}/books/new" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/books/new" }, method = RequestMethod.GET)
 	public String addNewBook(ModelMap model) {
 		Book book = new Book();
 		model.addAttribute("book", book);
@@ -56,7 +61,7 @@ public class BooksController {
 	 * This method will be called on form submission, handling POST request for
 	 * saving book in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/authors/{id}/books/new" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/books/new" }, method = RequestMethod.POST)
 	public String saveBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id) {
 
 		if (result.hasErrors()) {
@@ -68,18 +73,16 @@ public class BooksController {
 		book.setAuthor(author);
 		bookService.saveBook(book);
 
-		model.addAttribute("success", "Book " + book.getTitle() + " registered successfully");
-		model.addAttribute("bookList", true);
-
+		
 		return "redirect:/authors/{id}";
 	}
 
 	/*
 	 * This method will provide the medium to update an existing book.
 	 */
-	@RequestMapping(value = { "/authors/{id}/books/{book_id}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/books/{book_id}" }, method = RequestMethod.GET)
 	public String editBook(@PathVariable Long id, @PathVariable Long book_id, ModelMap model) {
-		Book book = bookService.findById(id);
+		Book book = bookService.findById(book_id);
 		Author author = book.getAuthor();
 		
 		model.addAttribute("book", book);
@@ -93,7 +96,7 @@ public class BooksController {
 	 * This method will be called on form submission, handling POST request for
 	 * updating book in database. It also validates the user input
 	 */
-	@RequestMapping(value = { "/authors/{id}/books/{book_id}" }, method = RequestMethod.PUT)
+	@RequestMapping(value = { "/books/{book_id}" }, method = RequestMethod.PUT)
 	public String updateBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id,
 			@PathVariable Long book_id) {
 
@@ -110,9 +113,9 @@ public class BooksController {
 	}
 
 	/*
-	 * This method will delete an book by it's ID value.
+	 * This method will delete a book by it's ID value.
 	 */
-	@RequestMapping(value = { "/authors/{id}/books/{book_id}" }, method = RequestMethod.DELETE)
+	@RequestMapping(value = { "/books/{book_id}" }, method = RequestMethod.DELETE)
 	public String deleteBook(@PathVariable Long id, @PathVariable Long book_id) {
 		bookService.deleteBook(bookService.findById(id));
 

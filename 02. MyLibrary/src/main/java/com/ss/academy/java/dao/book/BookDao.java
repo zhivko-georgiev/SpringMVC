@@ -1,4 +1,4 @@
-package com.ss.academy.java.dao;
+package com.ss.academy.java.dao.book;
 
 import java.util.List;
 

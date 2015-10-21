@@ -1,4 +1,4 @@
-package com.ss.academy.java.dao;
+package com.ss.academy.java.dao.author;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.ss.academy.java.dao.AbstractDao;
 import com.ss.academy.java.model.Author;
 
 @Repository("authorDao")

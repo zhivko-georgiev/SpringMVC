@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ss.academy.java.model.Author;
-import com.ss.academy.java.service.AuthorService;
+import com.ss.academy.java.service.author.AuthorService;
 
 @Controller
 @RequestMapping({ "/authors" })

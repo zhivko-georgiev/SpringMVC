@@ -19,7 +19,7 @@
 			<td>Status</td>
 		</tr>
 
-		<c:forEach items="${author.books}" var="book">
+		<c:forEach items="${books}" var="book">
 			<tr>
 				<td>${book.title}</td>
 				<td>${book.status}</td>

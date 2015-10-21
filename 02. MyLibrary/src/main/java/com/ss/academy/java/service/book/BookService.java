@@ -1,4 +1,4 @@
-package com.ss.academy.java.service;
+package com.ss.academy.java.service.book;
 
 import java.util.List;
 

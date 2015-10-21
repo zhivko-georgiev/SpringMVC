@@ -2,6 +2,8 @@ package com.ss.academy.java.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +28,11 @@ public class Book {
 	@NotNull
 	private String title;
 
-	@Column(name = "STATUS")
+	
+	@Column(name="STATUS") 
+	@Enumerated(EnumType.STRING) 
 	@NotNull
-	private String status;
+	private BookStatus status;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "AUTHOR_ID")
@@ -50,11 +54,11 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getStatus() {
+	public BookStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(BookStatus status) {
 		this.status = status;
 	}
 

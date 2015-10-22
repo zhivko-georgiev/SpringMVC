@@ -1,6 +1,5 @@
 package com.ss.academy.java.controller.book;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -73,7 +72,6 @@ public class BooksController {
 		author.getBooks().add(book);
 		book.setAuthor(author);
 		bookService.saveBook(book);
-
 		
 		return "redirect:/authors/{id}/books";
 	}
@@ -98,19 +96,22 @@ public class BooksController {
 	 * updating book in database. It also validates the user input
 	 */
 	@RequestMapping(value = { "/books/{book_id}" }, method = RequestMethod.PUT)
-	public String updateBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id,
+	public String updateBook(@Valid Book formBook, BindingResult result, ModelMap model, @PathVariable Long id,
 			@PathVariable Long book_id) {
 
 		if (result.hasErrors()) {
 			return "books/addNewBook";
 		}
+		
+		Author author = authorService.findById(id);
+		Book  dbBook = bookService.findById(book_id);
+		
+		dbBook = formBook;
 
-		bookService.updateBook(book);
-
-		model.addAttribute("success", "Book " + book.getTitle() + " updated successfully");
-		model.addAttribute("bookList", true);
-
-		return "success";
+		bookService.updateBook(dbBook);
+		author.getBooks().add(dbBook);
+		
+		return "redirect:/authors/{id}/books";
 	}
 
 	/*
@@ -118,8 +119,12 @@ public class BooksController {
 	 */
 	@RequestMapping(value = { "/books/{book_id}" }, method = RequestMethod.DELETE)
 	public String deleteBook(@PathVariable Long id, @PathVariable Long book_id) {
-		bookService.deleteBook(bookService.findById(id));
-
-		return "redirect:/books/";
+		Book book = bookService.findById(book_id);
+		Author author = authorService.findById(id);
+		
+		author.getBooks().remove(book);
+		bookService.deleteBook(book);
+		
+		return "redirect:/authors/{id}/books/";
 	}
 }

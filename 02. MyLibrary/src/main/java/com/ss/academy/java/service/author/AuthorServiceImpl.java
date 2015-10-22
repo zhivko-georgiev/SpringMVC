@@ -30,7 +30,7 @@ public class AuthorServiceImpl implements AuthorService {
 		if (entity != null) {
 			entity.setName(author.getName());
 			entity.setCountry(author.getCountry());
-			// entity.setBooks(author.getBooks());
+			entity.setBooks(author.getBooks());
 		}
 	}
 

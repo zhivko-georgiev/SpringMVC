@@ -1,17 +1,17 @@
 package com.ss.academy.java.model.author;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -32,9 +32,10 @@ public class Author {
 	@NotNull
 	private String name;
 
-	@Column(name = "COUNTRY")
+	@Column(name="COUNTRY") 
+	@Enumerated(EnumType.STRING) 
 	@NotNull
-	private String country;
+	private AuthorCountry country;
 	
 	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	//@OrderColumn(name = "book_id")
@@ -56,11 +57,11 @@ public class Author {
 		this.name = name;
 	}
 
-	public String getCountry() {
+	public AuthorCountry getCountry() {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(AuthorCountry country) {
 		this.country = country;
 	}
 	

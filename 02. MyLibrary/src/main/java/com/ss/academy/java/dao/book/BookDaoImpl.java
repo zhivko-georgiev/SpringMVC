@@ -1,6 +1,5 @@
 package com.ss.academy.java.dao.book;
 
-import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Criteria;

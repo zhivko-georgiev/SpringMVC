@@ -10,7 +10,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import com.ss.academy.java.dao.AbstractDao;
-import com.ss.academy.java.model.Book;
+import com.ss.academy.java.model.book.Book;
 
 @Repository("bookDao")
 public class BookDaoImpl extends AbstractDao<Long, Book> implements BookDao {

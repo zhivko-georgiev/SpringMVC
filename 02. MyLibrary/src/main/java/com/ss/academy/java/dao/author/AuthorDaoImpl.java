@@ -9,7 +9,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import com.ss.academy.java.dao.AbstractDao;
-import com.ss.academy.java.model.Author;
+import com.ss.academy.java.model.author.Author;
 
 @Repository("authorDao")
 public class AuthorDaoImpl extends AbstractDao<Long, Author> implements AuthorDao {

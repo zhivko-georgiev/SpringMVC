@@ -2,7 +2,7 @@ package com.ss.academy.java.dao.book;
 
 import java.util.Set;
 
-import com.ss.academy.java.model.Book;
+import com.ss.academy.java.model.book.Book;
 
 public interface BookDao {
 	

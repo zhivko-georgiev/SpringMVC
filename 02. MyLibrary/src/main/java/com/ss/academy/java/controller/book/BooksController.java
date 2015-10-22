@@ -1,4 +1,4 @@
-package com.ss.academy.java.controller;
+package com.ss.academy.java.controller.book;
 
 import java.util.List;
 import java.util.Set;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.ss.academy.java.model.Author;
-import com.ss.academy.java.model.Book;
+import com.ss.academy.java.model.author.Author;
+import com.ss.academy.java.model.book.Book;
 import com.ss.academy.java.service.author.AuthorService;
 import com.ss.academy.java.service.book.BookService;
 

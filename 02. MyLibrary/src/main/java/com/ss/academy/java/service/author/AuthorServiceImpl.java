@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ss.academy.java.dao.author.AuthorDao;
-import com.ss.academy.java.model.Author;
+import com.ss.academy.java.model.author.Author;
 
 @Service("authorService")
 @Transactional

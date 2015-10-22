@@ -1,4 +1,4 @@
-package com.ss.academy.java.model;
+package com.ss.academy.java.model.author;
 
 import java.util.List;
 import java.util.Set;
@@ -15,6 +15,8 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.ss.academy.java.model.book.Book;
 
 @Entity
 @Table(name = "AUTHOR")

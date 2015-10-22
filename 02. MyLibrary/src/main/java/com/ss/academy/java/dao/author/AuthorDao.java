@@ -2,7 +2,7 @@ package com.ss.academy.java.dao.author;
 
 import java.util.List;
 
-import com.ss.academy.java.model.Author;
+import com.ss.academy.java.model.author.Author;
 
 public interface AuthorDao {
  

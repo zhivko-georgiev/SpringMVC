@@ -5,7 +5,7 @@ CREATE TABLE author (
 author_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(60) NOT NULL,
 country VARCHAR(60) NOT NULL
-) ENGINE = InnoDB;
+) ENGINE = InnoDB CHARACTER SET=utf8;
 
 CREATE TABLE author_book (
 book_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -14,7 +14,9 @@ title VARCHAR(100) NOT NULL,
 status VARCHAR(30) NOT NULL,
 CONSTRAINT author_book_author FOREIGN KEY (author_id)
 REFERENCES author(author_id)
-) ENGINE = InnoDB;
+	   ON DELETE CASCADE
+       ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET=utf8;
 
 insert into `author` (author_id, name, country) Values(1, 'Ivan Vazov', 'Bulgaria');
 insert into `author` (author_id, name, country) Values(2, 'Hristo Botev', 'Bulgaria');

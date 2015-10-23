@@ -1,13 +1,16 @@
-create database if not exists `library`;
+DROP database if exists `library`;
+CREATE database `library`;
 use `library`;
 
-CREATE TABLE author (
+DROP TABLE if exists `author`;
+CREATE TABLE `author` (
 author_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(60) NOT NULL,
 country VARCHAR(60) NOT NULL
 ) ENGINE = InnoDB CHARACTER SET=utf8;
 
-CREATE TABLE author_book (
+DROP TABLE if exists `author_book`;
+CREATE TABLE `author_book` (
 book_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 author_id BIGINT UNSIGNED NOT NULL,
 title VARCHAR(100) NOT NULL,

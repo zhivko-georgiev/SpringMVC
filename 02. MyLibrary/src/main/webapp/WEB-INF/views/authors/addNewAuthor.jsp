@@ -20,11 +20,9 @@
 				<form:input path="name" id="name" />
 				<form:errors path="name" cssClass="error" />
 			</div>
-			<div class="form-group">
-				<label for="country">Country: </label>
-				<form:input path="country" id="country" />
-				<form:errors path="country" cssClass="error" />
-			</div>
+			<form:select path="country" id="country">
+				<form:options items="${countries}" />
+			</form:select>
 			<c:choose>
 				<c:when test="${edit}">
 					<form:form action="/MyLibrary/authors/${author.id}" method="PUT">

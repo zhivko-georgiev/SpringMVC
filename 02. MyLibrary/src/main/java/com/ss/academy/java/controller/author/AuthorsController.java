@@ -47,7 +47,7 @@ public class AuthorsController {
 		model.addAttribute("author", author);
 		model.addAttribute("edit", false);
 		model.addAttribute("countries", AuthorCountry.values());
-
+		
 		return "authors/addNewAuthor";
 	}
 

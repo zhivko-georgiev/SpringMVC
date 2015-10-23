@@ -1,5 +1,5 @@
 DROP database if exists `library`;
-CREATE database `library`;
+CREATE database `library` CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 use `library`;
 
 DROP TABLE if exists `author`;

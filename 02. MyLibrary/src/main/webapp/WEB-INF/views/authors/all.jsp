@@ -8,43 +8,53 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
-<title>Library</title>
+<title>SoftServe Library</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="jumbotron">
-			<h2 class="text-center">
-				<a href="<c:url value='/authors/' />">Welcome to Our Library</a>
-			</h2>
+			<h2 class="text-center">Welcome to Our Library</h2>
 		</div>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>NAME</th>
-					<th>Държава</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${authors}" var="author">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
 					<tr>
-						<td><a href="<c:url value='/authors/${author.id}/books' />">${author.name}</a></td>
-						<td>${author.country}</td>
-						<td><form:form action="/MyLibrary/authors/${author.id}"
-								method="GET">
-								<button type="submit" class="btn btn-default">Edit
-									Author</button>
-							</form:form></td>
-						<td><form:form action="/MyLibrary/authors/${author.id}"
-								method="DELETE">
-								<button type="submit" class="btn btn-default">Delete
-									Author</button>
-							</form:form></td>
+						<th><h3>Author Name</h3></th>
+						<th><h3>Country</h3></th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<br /> <a href="<c:url value='/authors/new' />">Add New Author</a> <br />
-		Go back to <a href="<c:url value='/' />">Home</a>
+				</thead>
+				<tbody>
+					<c:forEach items="${authors}" var="author">
+						<tr>
+							<td><h4>${author.name}</h4></td>
+							<td><h4>${author.country}</h4></td>
+							<td><form:form action="/MyLibrary/authors/${author.id}"
+									method="GET">
+									<button type="submit" class="btn btn-default">Edit
+										Author</button>
+								</form:form></td>
+							<td><form:form action="/MyLibrary/authors/${author.id}"
+									method="DELETE">
+									<button type="submit" class="btn btn-default">Delete
+										Author</button>
+								</form:form></td>
+							<td><form:form
+									action="/MyLibrary/authors/${author.id}/books/" method="GET">
+									<button type="submit" class="btn btn-default">List
+										Books</button>
+								</form:form></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<form:form action="/MyLibrary/authors/new/" method="GET">
+			<button type="submit" class="btn btn-primary btn-block">Add
+				New Author</button>
+		</form:form>
+		<br /> <img class="img-responsive"
+			src="<c:url value='/resources/images/SoftServe-logo.jpg' />"
+			alt="SoftServe Logo" width="100%" height="345">
 	</div>
 </body>
 </html>

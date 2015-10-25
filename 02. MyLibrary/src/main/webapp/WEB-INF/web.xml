@@ -15,6 +15,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	<!-- Setting default server response encoding -->
 	<filter>
         <filter-name>encoding-filter</filter-name>
         <filter-class>
@@ -32,9 +33,10 @@
 
     <filter-mapping>
         <filter-name>encoding-filter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/authors/*</url-pattern>
     </filter-mapping>
 
+	<!-- Filter allowing us to send PUT and DELETE requests from the JSPs -->
 	<filter>
 		<filter-name>httpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -65,8 +67,7 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/authors/*</url-pattern>
 	</servlet-mapping>
-
 
 </web-app>

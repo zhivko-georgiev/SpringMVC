@@ -18,7 +18,7 @@ import com.ss.academy.java.model.author.AuthorCountry;
 import com.ss.academy.java.service.author.AuthorService;
 
 @Controller
-@RequestMapping({ "/authors" })
+@RequestMapping({ "/" })
 public class AuthorsController {
 
 	@Autowired

@@ -11,7 +11,7 @@
 <title>Author Details</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<form:form modelAttribute="author" class="form-horizontal" role="form">
 			<legend>Author Details</legend>
 			<form:input type="hidden" path="id" id="id" />
@@ -36,8 +36,7 @@
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10">
 							<form:form action="/MyLibrary/authors/${author.id}" method="PUT">
-								<button type="submit" class="btn btn-default form-control">Edit
-									Author</button>
+								<button type="submit" class="btn btn-primary form-control">Edit</button>
 							</form:form>
 						</div>
 					</div>
@@ -47,17 +46,17 @@
 						<div class="col-sm-2"></div>
 						<div class="col-sm-10">
 							<form:form action="/MyLibrary/authors/new" method="GET">
-								<button type="submit" class="btn btn-default form-control">Add
-									Author</button>
+								<button type="submit" class="btn btn-primary form-control">Add</button>
 							</form:form>
 						</div>
 					</div>
 				</c:otherwise>
 			</c:choose>
 		</form:form>
-		<a href="<c:url value='/authors/' />"> <img class="img-responsive"
+		<br /> <a href="<c:url value='/authors/' />"> <img
+			class="img-responsive"
 			src="<c:url value='/resources/images/SoftServe-logo.jpg' />"
-			alt="SoftServe Logo" width="100%" height="345">
+			alt="SoftServe Logo" width="100%">
 		</a>
 	</div>
 </body>

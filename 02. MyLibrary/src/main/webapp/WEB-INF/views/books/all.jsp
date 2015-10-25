@@ -4,39 +4,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>SoftServe Library</title>
 </head>
 <body>
-	<h2>List of Books</h2>
-	<table>
-		<tr>
-			<td colspan="2">${author.name}</td>
-		</tr>
-		<tr>
-			<td>NAME</td>
-			<td>Status</td>
-		</tr>
-
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="text-center">${author.name}'s Books</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-xs-6 text-center">
+				<h2>Title</h2>
+			</div>
+			<div class="col-md-3 col-xs-6 text-center">
+				<h2>Status</h2>
+			</div>
+		</div>
 		<c:forEach items="${books}" var="book">
-			<tr>
-				<td>${book.title}</td>
-				<td>${book.status}</td>
-				<td>
-					<form:form action="/MyLibrary/authors/${author.id}/books/${book.id}" method="GET">
-						<input type="submit" value="Edit Book" />
-					</form:form>
-				</td>
-				<td>
-					<form:form action="/MyLibrary/authors/${author.id}/books/${book.id}" method="DELETE">
-						<input type="submit" value="Delete Book" />
-					</form:form>
-				</td>
-			</tr>
+			<div class="row">
+				<div class="col-md-3 col-xs-6 text-center">
+					<h4>${book.title}</h4>
+				</div>
+				<div class="col-md-3 col-xs-6 text-center">
+					<h4>${book.status}</h4>
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group btn-group-justified">
+						<div class="btn-group">
+							<form:form
+								action="/MyLibrary/authors/${author.id}/books/${book.id}"
+								method="GET">
+								<button type="submit" class="btn btn-primary">Edit</button>
+							</form:form>
+						</div>
+						<div class="btn-group">
+							<form:form
+								action="/MyLibrary/authors/${author.id}/books/${book.id}"
+								method="DELETE">
+								<button type="submit" class="btn btn-default">Delete</button>
+							</form:form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</c:forEach>
-	</table>
-	<br />
-	<a href="<c:url value='/authors/${author.id}/books/new' />">Add New Book</a>
-	<br /> Go back to
-	<a href="<c:url value='/' />">Home</a>
+		<br />
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 ">
+				<form:form action="/MyLibrary/authors/${author.id}/books/new/"
+					method="GET">
+					<button type="submit" class="btn btn-primary btn-block">Add
+						New Book</button>
+				</form:form>
+			</div>
+		</div>
+		<br /> <a href="<c:url value='/authors/' />"> <img
+			class="img-responsive"
+			src="<c:url value='/resources/images/SoftServe-logo.jpg' />"
+			alt="SoftServe Logo" width="100%">
+		</a>
+	</div>
 </body>
 </html>

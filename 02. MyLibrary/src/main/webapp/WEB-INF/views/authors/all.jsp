@@ -11,50 +11,64 @@
 <title>SoftServe Library</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<div class="jumbotron">
-			<h2 class="text-center">Welcome to Our Library</h2>
+			<h1 class="text-center">Welcome to Our Library</h1>
 		</div>
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<th><h3>Author Name</h3></th>
-						<th><h3>Country</h3></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${authors}" var="author">
-						<tr>
-							<td><h4>${author.name}</h4></td>
-							<td><h4>${author.country}</h4></td>
-							<td><form:form action="/MyLibrary/authors/${author.id}"
-									method="GET">
-									<button type="submit" class="btn btn-default">Edit
-										Author</button>
-								</form:form></td>
-							<td><form:form action="/MyLibrary/authors/${author.id}"
-									method="DELETE">
-									<button type="submit" class="btn btn-default">Delete
-										Author</button>
-								</form:form></td>
-							<td><form:form
-									action="/MyLibrary/authors/${author.id}/books/" method="GET">
-									<button type="submit" class="btn btn-default">List
-										Books</button>
-								</form:form></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		<div class="row">
+			<div class="col-md-3 col-xs-6 text-center">
+				<h2>Author Name</h2>
+			</div>
+			<div class="col-md-3 col-xs-6 text-center">
+				<h2>Country</h2>
+			</div>
 		</div>
-		<form:form action="/MyLibrary/authors/new/" method="GET">
-			<button type="submit" class="btn btn-primary btn-block">Add
-				New Author</button>
-		</form:form>
+		<c:forEach items="${authors}" var="author">
+			<div class="row">
+				<div class="col-md-3 col-xs-6 text-center">
+					<h4>${author.name}</h4>
+				</div>
+				<div class="col-md-3 col-xs-6 text-center">
+					<h4>${author.country}</h4>
+				</div>
+				<div class="col-md-6">
+					<div class="btn-group btn-group-justified">
+						<div class="btn-group">
+							<form:form action="/MyLibrary/authors/${author.id}" method="GET">
+								<button type="submit" class="btn btn-primary">Edit</button>
+							</form:form>
+						</div>
+						<div class="btn-group">
+							<form:form action="/MyLibrary/authors/${author.id}"
+								method="DELETE">
+								<button type="submit" class="btn btn-default">Delete</button>
+							</form:form>
+						</div>
+						<div class="btn-group">
+							<form:form action="/MyLibrary/authors/${author.id}/books/"
+								method="GET">
+								<button type="submit" class="btn btn-info">Books</button>
+							</form:form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<br />
+		</c:forEach>
+		<br />
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 ">
+				<form:form action="/MyLibrary/authors/new/" method="GET">
+					<button type="submit" class="btn btn-primary btn-block">Add
+						New Author</button>
+				</form:form>
+			</div>
+		</div>
 		<br /> <img class="img-responsive"
 			src="<c:url value='/resources/images/SoftServe-logo.jpg' />"
-			alt="SoftServe Logo" width="100%" height="345">
+			alt="SoftServe Logo" width="100%">
 	</div>
 </body>
 </html>

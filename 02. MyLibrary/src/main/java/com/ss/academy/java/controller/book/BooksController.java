@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ss.academy.java.model.author.Author;
+import com.ss.academy.java.model.author.AuthorCountry;
 import com.ss.academy.java.model.book.Book;
+import com.ss.academy.java.model.book.BookStatus;
 import com.ss.academy.java.service.author.AuthorService;
 import com.ss.academy.java.service.book.BookService;
 
@@ -53,6 +55,7 @@ public class BooksController {
 		Book book = new Book();
 		model.addAttribute("book", book);
 		model.addAttribute("edit", false);
+		model.addAttribute("statuses", BookStatus.values());
 
 		return "books/addNewBook";
 	}
@@ -87,6 +90,7 @@ public class BooksController {
 		model.addAttribute("book", book);
 		model.addAttribute("author", author);
 		model.addAttribute("edit", true);
+		model.addAttribute("statuses", BookStatus.values());
 
 		return "books/addNewBook";
 	}

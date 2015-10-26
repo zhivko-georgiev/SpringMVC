@@ -1,13 +1,11 @@
 package com.ss.academy.java.model.author;
 
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,14 +30,13 @@ public class Author {
 	@NotNull
 	private String name;
 
-	@Column(name="COUNTRY") 
-	@Enumerated(EnumType.STRING) 
+	@Column(name = "COUNTRY")
+	@Enumerated(EnumType.STRING)
 	@NotNull
 	private AuthorCountry country;
-	
-	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//@OrderColumn(name = "book_id")
-	private Set<Book> books;
+
+	@OneToMany(mappedBy = "author")
+	private List<Book> books;
 
 	public Long getId() {
 		return id;
@@ -48,7 +45,7 @@ public class Author {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -64,12 +61,12 @@ public class Author {
 	public void setCountry(AuthorCountry country) {
 		this.country = country;
 	}
-	
-	public Set<Book> getBooks() {
+
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(Set<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 }

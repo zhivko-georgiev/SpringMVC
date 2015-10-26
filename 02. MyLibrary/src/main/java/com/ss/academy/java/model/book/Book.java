@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,13 +29,12 @@ public class Book {
 	@NotNull
 	private String title;
 
-	
-	@Column(name="STATUS") 
-	@Enumerated(EnumType.STRING) 
+	@Column(name = "STATUS")
+	@Enumerated(EnumType.STRING)
 	@NotNull
 	private BookStatus status;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne()
 	@JoinColumn(name = "AUTHOR_ID")
 	private Author author;
 
@@ -47,7 +45,7 @@ public class Book {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}

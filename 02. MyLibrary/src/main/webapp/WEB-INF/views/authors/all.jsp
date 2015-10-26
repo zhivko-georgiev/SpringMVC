@@ -13,11 +13,11 @@
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<h1 class="text-center">Welcome to Our Library</h1>
+			<h1 class="text-center">Authors</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-3 col-xs-6 text-center">
-				<h2>Author Name</h2>
+				<h2>Name</h2>
 			</div>
 			<div class="col-md-3 col-xs-6 text-center">
 				<h2>Country</h2>
@@ -66,9 +66,9 @@
 				</form:form>
 			</div>
 		</div>
-		<br /> <img class="img-responsive"
+		<br /> <a href="<c:url value='/' />"><img class="img-responsive"
 			src="<c:url value='/resources/images/SoftServe-logo.jpg' />"
-			alt="SoftServe Logo" width="100%">
+			alt="SoftServe Logo" width="100%"></a>
 	</div>
 </body>
 </html>

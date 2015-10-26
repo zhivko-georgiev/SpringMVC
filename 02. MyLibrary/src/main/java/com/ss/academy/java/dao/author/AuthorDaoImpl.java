@@ -3,7 +3,6 @@ package com.ss.academy.java.dao.author;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
@@ -15,11 +14,7 @@ import com.ss.academy.java.model.author.Author;
 public class AuthorDaoImpl extends AbstractDao<Long, Author> implements AuthorDao {
 
 	public Author findById(Long id) {
-		Author author = getByKey(id);
-        if(author!=null){
-            Hibernate.initialize(author.getBooks());
-        }
-        return author;
+		return getByKey(id);
 	}
 
 	public void saveAuthor(Author author) {
@@ -34,16 +29,14 @@ public class AuthorDaoImpl extends AbstractDao<Long, Author> implements AuthorDa
 
 	@SuppressWarnings("unchecked")
 	public List<Author> findAllAuthors() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("name"));
-        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
-        List<Author> authors = (List<Author>) criteria.list();
-         
-        // No need to fetch userProfiles since we are not showing them on list page. Let them lazy load. 
-        // Uncomment below lines for eagerly fetching of userProfiles if you want.
-        
-        for(Author author : authors){
-            Hibernate.initialize(author.getBooks());
-        }
-        return authors;
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("name")); // Order
+																				// ascending
+																				// by
+																				// name
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);   // To avoid
+																		// duplicates.
+		List<Author> authors = (List<Author>) criteria.list();
+
+		return authors;
 	}
 }

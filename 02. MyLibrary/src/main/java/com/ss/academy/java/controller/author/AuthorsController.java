@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,14 +17,11 @@ import com.ss.academy.java.model.author.AuthorCountry;
 import com.ss.academy.java.service.author.AuthorService;
 
 @Controller
-@RequestMapping({ "/" })
+@RequestMapping({ "/authors" })
 public class AuthorsController {
 
 	@Autowired
 	AuthorService service;
-
-	@Autowired
-	MessageSource messageSource;
 
 	/*
 	 * This method will list all existing authors.

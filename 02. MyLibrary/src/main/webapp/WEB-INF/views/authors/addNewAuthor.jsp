@@ -19,7 +19,7 @@
 				<label for="name" class="control-label col-sm-2">Name:</label>
 				<div class="col-sm-10">
 					<form:input path="name" id="name" class="form-control" />
-					<form:errors path="name" cssClass="error" />
+					<form:errors path="name" />
 				</div>
 			</div>
 			<div class="form-group">

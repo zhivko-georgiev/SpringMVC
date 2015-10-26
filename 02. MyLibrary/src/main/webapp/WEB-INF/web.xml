@@ -33,7 +33,7 @@
 
     <filter-mapping>
         <filter-name>encoding-filter</filter-name>
-        <url-pattern>/authors/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
 	<!-- Filter allowing us to send PUT and DELETE requests from the JSPs -->
@@ -67,7 +67,7 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/authors/*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 </web-app>

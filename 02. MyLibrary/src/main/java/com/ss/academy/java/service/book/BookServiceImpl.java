@@ -1,6 +1,6 @@
 package com.ss.academy.java.service.book;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
 		}
 	}
 
-	public Set<Book> findAllBooks() {
+	public List<Book> findAllBooks() {
 		return dao.findAllBooks();
 	};
 

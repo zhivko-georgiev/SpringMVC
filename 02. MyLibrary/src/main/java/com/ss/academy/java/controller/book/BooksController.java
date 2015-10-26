@@ -1,11 +1,10 @@
 package com.ss.academy.java.controller.book;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ss.academy.java.model.author.Author;
-import com.ss.academy.java.model.author.AuthorCountry;
 import com.ss.academy.java.model.book.Book;
 import com.ss.academy.java.model.book.BookStatus;
 import com.ss.academy.java.service.author.AuthorService;
 import com.ss.academy.java.service.book.BookService;
 
 @Controller
-@RequestMapping(value = "/{id}/books")
+@RequestMapping(value = "/authors/{id}/books")
 public class BooksController {
 
 	@Autowired
@@ -30,16 +28,17 @@ public class BooksController {
 	@Autowired
 	AuthorService authorService;
 
-	@Autowired
-	MessageSource messageSource;
-
 	/*
 	 * This method will list all existing books.
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String listAllBooks(@PathVariable Long id, ModelMap model) {
 		Author author = authorService.findById(id);
-		Set<Book> books = author.getBooks();
+		List<Book> books = author.getBooks();
+		
+		if (books.size() == 0) {
+			model.addAttribute("emptyList", true);
+		}
 		
 		model.addAttribute("books", books);
 		model.addAttribute("author", author);

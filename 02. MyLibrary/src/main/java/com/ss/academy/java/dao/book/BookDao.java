@@ -1,6 +1,6 @@
 package com.ss.academy.java.dao.book;
 
-import java.util.Set;
+import java.util.List;
 
 import com.ss.academy.java.model.book.Book;
 
@@ -12,5 +12,5 @@ public interface BookDao {
 
 	void deleteBookById(Long id);
 
-	Set<Book> findAllBooks();
+	List<Book> findAllBooks();
 }

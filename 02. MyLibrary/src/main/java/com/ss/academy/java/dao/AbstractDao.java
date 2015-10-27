@@ -13,14 +13,14 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 
 	private final Class<T> persistentClass;
 
+	@Autowired
+	private SessionFactory sessionFactory;
+
 	@SuppressWarnings("unchecked")
 	public AbstractDao() {
 		this.persistentClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
 				.getActualTypeArguments()[1];
 	}
-
-	@Autowired
-	private SessionFactory sessionFactory;
 
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();

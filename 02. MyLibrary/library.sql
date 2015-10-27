@@ -37,7 +37,7 @@ CREATE TABLE `author_book` (
 `title` VARCHAR(100) NOT NULL,
 `status` VARCHAR(30) NOT NULL,
 CONSTRAINT `author_book_author` FOREIGN KEY (`author_id`)
-REFERENCES `author`(`author_id`) ON DELETE CASCADE ON UPDATE CASCADE
+REFERENCES `author`(`author_id`) ON DELETE CASCADE
 ) ENGINE = InnoDB CHARACTER SET=utf8;
 
 --

@@ -16,6 +16,9 @@ import com.ss.academy.java.model.author.Author;
 import com.ss.academy.java.model.author.AuthorCountry;
 import com.ss.academy.java.service.author.AuthorService;
 
+/**
+ * Handles requests for the application authors page.
+ */
 @Controller
 @RequestMapping({ "/authors" })
 public class AuthorsController {
@@ -49,7 +52,7 @@ public class AuthorsController {
 
 	/*
 	 * This method will be called on form submission, handling POST request for
-	 * saving author in database. It also validates the user input
+	 * saving author in the database. It also validates the user input.
 	 */
 	@RequestMapping(value = { "/new" }, method = RequestMethod.POST)
 	public String saveAuthor(@Valid Author author, BindingResult result, ModelMap model) {
@@ -77,7 +80,7 @@ public class AuthorsController {
 
 	/*
 	 * This method will be called on form submission, handling POST request for
-	 * updating author in database. It also validates the user input
+	 * updating author in database. It also validates the user input.
 	 */
 	@RequestMapping(value = { "/{id}" }, method = RequestMethod.PUT)
 	public String updateAuthor(@Valid Author author, BindingResult result, ModelMap model, @PathVariable Long id) {

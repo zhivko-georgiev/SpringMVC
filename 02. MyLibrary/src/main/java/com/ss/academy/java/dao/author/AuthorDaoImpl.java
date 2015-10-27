@@ -29,10 +29,10 @@ public class AuthorDaoImpl extends AbstractDao<Long, Author> implements AuthorDa
 
 	@SuppressWarnings("unchecked")
 	public List<Author> findAllAuthors() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("name")); // Order
-																				// ascending
-																				// by
-																				// name
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("name"));  // Order
+																				 // ascending
+																				 // by
+																				 // name
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);   // To avoid
 																		// duplicates.
 		List<Author> authors = (List<Author>) criteria.list();

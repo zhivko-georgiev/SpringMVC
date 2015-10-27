@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-3 col-xs-12">
+			<div class="col-md-4 col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-body text-center">Number Of Authors</div>
 					<div class="panel-footer text-center">${authorsCount}</div>
@@ -32,7 +32,7 @@
 				</form:form>
 			</div>
 			<br />
-			<div class="col-md-9 col-xs-12">
+			<div class="col-md-8 col-xs-12">
 				<img class="img-responsive"
 					src="<c:url value='/resources/images/reader.jpg' />"
 					alt="A guy reading a book">

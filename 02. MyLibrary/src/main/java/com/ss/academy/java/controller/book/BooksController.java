@@ -18,6 +18,9 @@ import com.ss.academy.java.model.book.BookStatus;
 import com.ss.academy.java.service.author.AuthorService;
 import com.ss.academy.java.service.book.BookService;
 
+/**
+ * Handles requests for the application authors' books page.
+ */
 @Controller
 @RequestMapping(value = "/authors/{id}/books")
 public class BooksController {
@@ -61,7 +64,7 @@ public class BooksController {
 
 	/*
 	 * This method will be called on form submission, handling POST request for
-	 * saving book in database. It also validates the user input
+	 * saving book in database. It also validates the user input.
 	 */
 	@RequestMapping(value = { "/new" }, method = RequestMethod.POST)
 	public String saveBook(@Valid Book book, BindingResult result, ModelMap model, @PathVariable Long id) {
@@ -96,7 +99,7 @@ public class BooksController {
 
 	/*
 	 * This method will be called on form submission, handling POST request for
-	 * updating book in database. It also validates the user input
+	 * updating book in database. It also validates the user input.
 	 */
 	@RequestMapping(value = { "/{book_id}" }, method = RequestMethod.PUT)
 	public String updateBook(@Valid Book formBook, BindingResult result, ModelMap model, @PathVariable Long id,
